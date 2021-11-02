@@ -64,6 +64,13 @@ class QuestionsViewController: UIViewController {
         answerChosen.append(currentAnswers[index])
         nextQuestion()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showResult" {
+            guard let resultVC = segue.destination as? ResultViewController else { return }
+            resultVC.movedAnswers = answerChosen
+        }
+    }
 }
 
 // MARK: Private Methods
@@ -132,7 +139,7 @@ extension QuestionsViewController {
     
     private func nextQuestion() {
         questionIndex += 1
-                
+
         if questionIndex < questions.count  {
             updateUI()
             return

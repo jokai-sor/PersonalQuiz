@@ -9,15 +9,23 @@ import UIKit
 
 class ResultViewController: UIViewController {
 
+    @IBOutlet var animalLabel: UILabel!
+    @IBOutlet var animalText: UILabel!
+    
+    var movedAnswers: [Answer]!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.hidesBackButton = true
+//        print(movedAnswers!)
+        
         
     }
-
-    // 1. Передать сюда массив с ответами
+    
+    
+    
     // 2. Определить наиболее часто встречающийся тип животного
     // 3. Отобразить результаты в соотвствии с этим животным
-    // 4. Избавиться от кнопки возврата назад на экране результатов
     
 }
