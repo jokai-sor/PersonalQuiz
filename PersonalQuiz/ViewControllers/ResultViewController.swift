@@ -14,18 +14,25 @@ class ResultViewController: UIViewController {
     
     var movedAnswers: [Answer]!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-//        print(movedAnswers!)
         
+        var types: [AnimalType : Int] = [:]
         
+        movedAnswers.forEach {
+            if let value = types[$0.type] {
+                types.updateValue(value + 1, forKey: $0.type)
+            } else {
+                types.updateValue(1, forKey: $0.type)
+            }
+        }
+        
+        guard let animalType = (types.sorted() {
+            $0.value > $1.value
+        }).first else { return }
+        
+        animalLabel.text = "\(animalType.key.rawValue)"
+        animalText.text = animalType.key.definition
     }
-    
-    
-    
-    // 2. Определить наиболее часто встречающийся тип животного
-    // 3. Отобразить результаты в соотвствии с этим животным
-    
 }
